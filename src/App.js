@@ -3,14 +3,15 @@ import { useState, useCallback } from 'react';
 function App() {
   const [counter1, setCounter1] = useState(0);
   const [counter2, setCounter2] = useState(0);
-
-  const increment1 = () => {
+  // functions are recreated. This represents perfomance issues.
+  // Use useCallback to avoid recreate.
+  const increment1 = useCallback(() => {
     setCounter1(counter1 + 1);
-  }
+  }, [counter1])
   
-  const increment2 = () => {
+  const increment2 = useCallback(() => {
     setCounter2(counter2 + 1);
-  }
+  }, [counter2])
 
 
   return (
